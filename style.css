@@ -54,6 +54,7 @@ th {
 tr > td:first-child {
   background-color: #eef;
   color: black;
+  width: 75px;
 }
 
 .boolean {
