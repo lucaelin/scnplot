@@ -10,6 +10,9 @@
     .row {
         display: block !important;   
     }
+    .link.boolean {
+        color: black;
+    }
 }
 
 body {
