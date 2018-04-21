@@ -59,15 +59,6 @@ function createChannel(scn, classes) {
   let header = ['ch', 'link', 'name', 'lowcut', 'gate', 'dyn', 'insert', 'physical'];
   let numch = 32;
 
-  /*
-  let chTable = document.createElement('table');
-  chTable.appendChild(createHeader(['ch', 'link', 'name', 'lowcut', 'gate', 'dyn', 'insert', 'physical']));
-  for (let ch = 1; ch<=32; ch++) {
-    ch = ch.toString().padStart(2, '0');
-    chTable.appendChild(createChannel(ch, scn.ch[ch], scn.config.chlink.value[Math.floor((ch-1)/2)]));
-  }
-  */
-
   return createTable(classes, name, header, numch, (id)=>{
     let ch = id.toString().padStart(2, '0');
     let config = scn.ch[ch];
@@ -89,15 +80,6 @@ function createAux(scn, classes) {
   let header = ['ch', 'link', 'name', 'physical'];
   let numch = 6;
   
-  /*
-  let auxTable = document.createElement('table');
-  auxTable.appendChild(createHeader(['ch', 'link', 'name', 'physical']));
-  for (let aux = 1; aux<=6; aux++) {
-    aux = aux.toString().padStart(2, '0');
-    auxTable.appendChild(createAux(aux, scn.auxin[aux], scn.config.auxlink.value[Math.floor((aux-1)/2)]));
-  }
-  */
-  
   return createTable(classes, name, header, numch, (id)=>{
     let ch = id.toString().padStart(2, '0');
     let config = scn.auxin[ch];
@@ -114,15 +96,6 @@ function createBus(scn, classes) {
   let name = 'Bus';
   let header = ['ch', 'link', 'name', 'dyn', 'insert'];
   let numch = 16;
-  
-  /*
-  let busTable = document.createElement('table');
-  busTable.appendChild(createHeader(['ch', 'link', 'name', 'dyn', 'insert']));
-  for (let bus = 1; bus<=16; bus++) {
-    bus = bus.toString().padStart(2, '0');
-    busTable.appendChild(createBus(bus, scn.bus[bus], scn.config.buslink.value[Math.floor((bus-1)/2)]));
-  }
-  */
   
   return createTable(classes, name, header, numch, (id)=>{
     let ch = id.toString().padStart(2, '0');
@@ -142,15 +115,6 @@ function createMatrix(scn, classes) {
   let header = ['ch', 'link', 'name', 'insert'];
   let numch = 6;
   
-  /*
-  let matrixTable = document.createElement('table');
-  matrixTable.appendChild(createHeader(['ch', 'link', 'name', 'insert']));
-  for (let matrix = 1; matrix<=6; matrix++) {
-    matrix = matrix.toString().padStart(2, '0');
-    matrixTable.appendChild(createMatrix(matrix, , ));
-  }
-  */
-
   return createTable(classes, name, header, numch, (id)=>{
     let ch = id.toString().padStart(2, '0');
     let config = scn.mtx[ch]; 
@@ -167,12 +131,6 @@ function createMain(scn, classes) {
   let name = 'Main';
   let header = ['name', 'dyn', 'insert'];
   let numch = 2;
-  /*
-  let mainTable = document.createElement('table');
-  mainTable.appendChild(createHeader(['name', 'dyn', 'insert']));
-  mainTable.appendChild(createMain('LR', scn.main.st));
-  mainTable.appendChild(createMain('M', scn.main.m));
-  */
 
   return createTable(classes, name, header, numch, (id)=>{
     let name = (['LR', 'M'])[id-1]; 
