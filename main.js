@@ -211,7 +211,8 @@ function createFxD(scn, classes) {
   let numch = 4;
   
   return createTable(classes, name, header, numch, (id)=>{
-    let name = 'FX'+id
+    id += 4;
+    let name = 'FX'+id;
     let fxconfig = scn.fx[id];
     
     return createTR(id, [
