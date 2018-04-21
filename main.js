@@ -113,7 +113,7 @@ function createAux(scn, classes) {
 function createBus(scn, classes) {
   let name = 'Bus';
   let header = ['ch', 'link', 'name', 'dyn', 'insert'];
-  let numch = 8;
+  let numch = 16;
   
   /*
   let busTable = document.createElement('table');
