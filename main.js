@@ -54,6 +54,61 @@ function createTable(classes, name, header, numch, datafn) {
   return dom;
 }
 
+function getFXName(scn, short) {
+  // TODO: find missing names and plot them
+  return ({
+    RPLT: 'Platereverb',
+    DLY: 'Delay',
+    CMB: 'Combinator',
+    FAC: 'FAC (?)',
+    EXC: 'Exciter',
+    WAVD: 'Wavedesigner',
+    P1A: 'P1A (?)',
+  })[short];
+}
+
+function getPhysicalIn(scn, id) {
+  return id.toString().padStart(2, '0') + ' (' + getPhysicalName(scn, id) + ')';
+}
+
+function getPhysicalName(scn, id) {
+  let IN = scn.config.routing.IN.value;
+  if(id <= 36) {
+    return IN[Math.floor((id-1)/8)] + ' [' + ((id-1)%8+1) + ']' ;
+  }
+  
+  return ({
+    37: 'USB-Player',
+    38: 'USB-Player',
+    39: 'Unknown',
+    40: 'Unknown',
+    41: 'Unknown',
+    42: 'Unknown',
+    43: 'Unknown',
+    44: 'Unknown',
+    45: 'Unknown',
+    46: 'Unknown',
+    47: 'Unknown',
+    48: 'Unknown',
+    49: 'BUS01',
+    50: 'BUS02',
+    51: 'BUS03',
+    52: 'BUS04',
+    53: 'BUS05',
+    54: 'BUS06',
+    55: 'BUS07',
+    56: 'BUS08',
+    57: 'BUS09',
+    58: 'BUS10',
+    59: 'BUS12',
+    60: 'BUS13',
+    61: 'BUS14',
+    62: 'BUS15',
+    63: 'BUS16',
+    64: 'Unknown',
+  })[id];
+}
+
 function createChannel(scn, classes) {
   let name = 'Channel';
   let header = ['ch', 'link', 'name', 'lowcut', 'gate', 'dyn', 'insert', 'physical'];
@@ -71,7 +126,7 @@ function createChannel(scn, classes) {
       config.gate.value[0]==='ON',                                // GATE
       config.dyn.value[0]==='ON',                                 // COMPRESSOR
       config.insert.value[0]==='ON'?config.insert.value[2]:'',    // INSERT
-      config.config.value[3],                                     // PHYSICAL  
+      getPhysicalIn(scn, config.config.value[3]),                 // PHYSICAL  
     ]);
   });
 }
@@ -88,7 +143,7 @@ function createAux(scn, classes) {
       ch,                                                         // CHANNEL NUMBER
       [link==='ON', 'link'],                                      // STEREO LINK
       [config.config.value[0], 'color-'+config.config.value[2]],  // NAME
-      config.config.value[3],                                     // PHYSICAL  
+      getPhysicalIn(scn, config.config.value[3]),                 // PHYSICAL  
     ]);
   });
 }
