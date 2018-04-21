@@ -11,7 +11,7 @@
         display: block !important;   
     }
     .link.boolean {
-        color: black;
+        color: black !important;
     }
 }
 
