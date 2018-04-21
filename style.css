@@ -1,3 +1,11 @@
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
 body {
   font-family: 'Ubuntu Mono', monospace;
   margin: 0;
