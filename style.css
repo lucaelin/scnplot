@@ -4,6 +4,12 @@
     {
         display: none !important;
     }
+    #out > div {
+        page-break-after: always;
+    }
+    .row {
+        display: block !important;   
+    }
 }
 
 body {
