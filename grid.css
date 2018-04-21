@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+
+.valign {
+  display: grid;
+  align-items: center;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+}
+
+.row .a0 {display: none;}
+.row .a1 {grid-column: auto / span 1;}
+.row .a2 {grid-column: auto / span 2;}
+.row .a3 {grid-column: auto / span 3;}
+.row .a4 {grid-column: auto / span 4;}
+.row .a5 {grid-column: auto / span 5;}
+.row .a6 {grid-column: auto / span 6;}
+.row .a7 {grid-column: auto / span 7;}
+.row .a8 {grid-column: auto / span 8;}
+.row .a9 {grid-column: auto / span 9;}
+.row .a10 {grid-column: auto / span 10;}
+.row .a11 {grid-column: auto / span 11;}
+.row .a12 {grid-column: auto / span 12;}
+
+/* Small devices (phones, 600px and up) */
+@media only screen and (max-width: 600px) {
+  .row .s0 {display: none;}
+  .row .s1 {grid-column: auto / span 1;}
+  .row .s2 {grid-column: auto / span 2;}
+  .row .s3 {grid-column: auto / span 3;}
+  .row .s4 {grid-column: auto / span 4;}
+  .row .s5 {grid-column: auto / span 5;}
+  .row .s6 {grid-column: auto / span 6;}
+  .row .s7 {grid-column: auto / span 7;}
+  .row .s8 {grid-column: auto / span 8;}
+  .row .s9 {grid-column: auto / span 9;}
+  .row .s10 {grid-column: auto / span 10;}
+  .row .s11 {grid-column: auto / span 11;}
+  .row .s12 {grid-column: auto / span 12;}
+}
+
+/* Medium devices (tablets) */
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  .row .m0 {display: none;}
+  .row .m1 {grid-column: auto / span 1;}
+  .row .m2 {grid-column: auto / span 2;}
+  .row .m3 {grid-column: auto / span 3;}
+  .row .m4 {grid-column: auto / span 4;}
+  .row .m5 {grid-column: auto / span 5;}
+  .row .m6 {grid-column: auto / span 6;}
+  .row .m7 {grid-column: auto / span 7;}
+  .row .m8 {grid-column: auto / span 8;}
+  .row .m9 {grid-column: auto / span 9;}
+  .row .m10 {grid-column: auto / span 10;}
+  .row .m11 {grid-column: auto / span 11;}
+  .row .m12 {grid-column: auto / span 12;}
+}
+
+/* Large devices (laptops/desktops, 993px and up) */
+@media only screen and (min-width: 993px) {
+  .row .l0 {display: none;}
+  .row .l1 {grid-column: auto / span 1;}
+  .row .l2 {grid-column: auto / span 2;}
+  .row .l3 {grid-column: auto / span 3;}
+  .row .l4 {grid-column: auto / span 4;}
+  .row .l5 {grid-column: auto / span 5;}
+  .row .l6 {grid-column: auto / span 6;}
+  .row .l7 {grid-column: auto / span 7;}
+  .row .l8 {grid-column: auto / span 8;}
+  .row .l9 {grid-column: auto / span 9;}
+  .row .l10 {grid-column: auto / span 10;}
+  .row .l11 {grid-column: auto / span 11;}
+  .row .l12 {grid-column: auto / span 12;}
+}
