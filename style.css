@@ -1,3 +1,12 @@
+@supports (display: grid) {
+    .compatAlert {
+        display: none;
+    }
+}
+.compatAlert {
+    color: red;
+    font-size: 18pt;
+}
 @media print
 {    
     .no-print, .no-print *
