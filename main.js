@@ -68,6 +68,7 @@ function getFXName(scn, short) {
 }
 
 function getPhysicalIn(scn, id) {
+  if(id==0) return '';
   return id.toString().padStart(2, '0') + ' (' + getPhysicalName(scn, id) + ')';
 }
 
