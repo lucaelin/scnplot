@@ -33,6 +33,7 @@ label, input {
   width: 100%;
   background-color: #446;
   color: white;
+  font-size: 110%;
 }
 pre {
   display: none;
