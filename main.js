@@ -64,12 +64,14 @@ function getFXName(scn, short) {
     EXC: 'Exciter',
     WAVD: 'Wavedesigner',
     P1A: 'P1A (?)',
+    HALL: 'Hallreverb',
+    GEQ: 'GraphicEq',
   })[short];
 }
 
 function getPhysicalIn(scn, id) {
   if(id==0) return '';
-  return id.toString().padStart(2, '0') + ' (' + getPhysicalName(scn, id) + ')';
+  return id.toString().padStart(2, '0') + ': ' + getPhysicalName(scn, id);
 }
 
 function getPhysicalName(scn, id) {
@@ -101,12 +103,12 @@ function getPhysicalName(scn, id) {
     56: 'BUS08',
     57: 'BUS09',
     58: 'BUS10',
-    59: 'BUS12',
-    60: 'BUS13',
-    61: 'BUS14',
-    62: 'BUS15',
-    63: 'BUS16',
-    64: 'Unknown',
+    59: 'BUS11',
+    60: 'BUS12',
+    61: 'BUS13',
+    62: 'BUS14',
+    63: 'BUS15',
+    64: 'BUS16',
   })[id];
 }
 
