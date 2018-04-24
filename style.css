@@ -14,7 +14,10 @@
         display: none !important;
     }
     #out > div {
-        page-break-after: always;
+        page-break-inside: avoid;
+    }
+    td, th {
+      padding: 2px !important;
     }
     .row {
         display: block !important;   
