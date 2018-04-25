@@ -76,15 +76,13 @@ function getPhysicalIn(scn, id) {
 
 function getPhysicalName(scn, id) {
   let IN = scn.config.routing.IN.value;
-  if(id <= 36) {
+  if(id <= 38) {
     return IN[Math.floor((id-1)/8)] + ' [' + ((id-1)%8+1) + ']' ;
   }
   
   return ({
-    37: 'USB-Player',
-    38: 'USB-Player',
-    39: 'Unknown',
-    40: 'Unknown',
+    39: 'USB-Player',
+    40: 'USB-Player',
     41: 'Unknown',
     42: 'Unknown',
     43: 'Unknown',
@@ -136,7 +134,7 @@ function createChannel(scn, classes) {
 function createAux(scn, classes) {
   let name = 'Aux';
   let header = ['ch', 'link', 'name', 'physical'];
-  let numch = 6;
+  let numch = 8;
   
   return createTable(classes, name, header, numch, (id)=>{
     let ch = id.toString().padStart(2, '0');
