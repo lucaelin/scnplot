@@ -13,6 +13,9 @@
         margin-top: 0;
         margin-bottom: 5px;
     }
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
     .no-print, .no-print *
     {
         display: none !important;
@@ -21,7 +24,7 @@
         page-break-inside: avoid;
     }
     td, th {
-      padding: 2px !important;
+        padding: 2px !important;
     }
     .row {
         display: block !important;   
@@ -32,38 +35,39 @@
 }
 
 body {
-  font-family: 'Ubuntu Mono', monospace;
-  margin: 0;
-  padding: 0;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 12pt;
+    margin: 0;
+    padding: 0;
 }
 label, input {
-  width: 100%;
-  background-color: #446;
-  color: white;
-  font-size: 110%;
+    width: 100%;
+    background-color: #446;
+    color: white;
+    font-size: 110%;
 }
 pre {
-  display: none;
-  font-family: 'Ubuntu Mono', monospace;
+    display: none;
+    font-family: 'Ubuntu Mono', monospace;
 }
 .table {
-  margin: 0 20px 20px 20px;
+    margin: 0 20px 20px 20px;
 }
 #out > div {
-  overflow-x: auto;
+    overflow-x: auto;
 }
 table {
-  width: 100%;
-  border: 2px solid black;
-  box-shadow: 4px 3px 5px #777;
-  border-collapse: collapse;
+    width: 100%;
+    border: 2px solid black;
+    box-shadow: 4px 3px 5px #777;
+    border-collapse: collapse;
 }
 td, th {
-  border: 1px solid black;
-  padding: 7px;
-  background-color: white;
-  white-space: nowrap; 
-  overflow: hidden;
+    border: 1px solid black;
+    padding: 7px;
+    background-color: white;
+    white-space: nowrap; 
+    overflow: hidden;
 }
 
 .even .link.boolean.true ~ td {
@@ -74,34 +78,34 @@ td, th {
 }
 
 th {
-  background-color: #779;
-  color: white;
+    background-color: #779;
+    color: white;
 }
 tr > td:first-child {
-  background-color: #eef;
-  color: black;
-  width: 75px;
+    background-color: #eef;
+    color: black;
+    width: 75px;
 }
 
 .boolean {
-  text-align: center;
-  width: 75px;
+    text-align: center;
+    width: 75px;
 }
 .link.boolean {
-  color: rgba(0,0,0,0);
-  border: none;
+    color: rgba(0,0,0,0);
+    border: none;
 }
 .odd .link.boolean.true {
-  background-image: url(./linktop.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+    background-image: url(./linktop.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .even .link.boolean.true {
-  background-image: url(./linkbtn.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+    background-image: url(./linkbtn.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 
