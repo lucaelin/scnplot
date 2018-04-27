@@ -1,6 +1,7 @@
 const CACHE = 'network-or-cache';
 const TIMEOUT = 500;
 const FILES = [
+  './',
   './index.html',
   './main.js',
   './style.css',
@@ -44,6 +45,7 @@ function fromNetwork(request, timeout) {
     var timeoutId = setTimeout(reject, timeout);
     // Fulfill and update in case of success.
     fetch(request).then(function (response) {
+      console.log('The service worker is serving from the network.');
       clearTimeout(timeoutId);
 
       fulfill(response);
@@ -55,6 +57,7 @@ function fromNetwork(request, timeout) {
 
 function updateCache(request, response) {
   return caches.open(CACHE).then(function (cache) {
+    console.log('The service worker is updating the cache.');
     cache.put(request, response);
   });
 }
@@ -65,7 +68,12 @@ function updateCache(request, response) {
 function fromCache(request) {
   return caches.open(CACHE).then(function (cache) {
     return cache.match(request).then(function (matching) {
-      return matching || Promise.reject('no-match');
+      if(matching) {
+        console.log('The service worker is serving from the cache.');
+        return matching;
+      }
+      console.log('The service worker is serving from the cache but didn\'t find a match.');
+      return fetch(request);
     });
   });
 }
