@@ -31,6 +31,9 @@
     </div>
     <pre></pre>
     <script>
+      navigator.serviceWorker.register('sw.js', {
+        scope: 'scnplot'
+      });
       document.querySelector('input[type=file]').addEventListener('change', function(evt) {
         gtag('event','filechange');
       });
