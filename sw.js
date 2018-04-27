@@ -42,14 +42,20 @@ function fromNetwork(request, timeout) {
   return new Promise(function (fulfill, reject) {
     // Reject in case of timeout.
     var timeoutId = setTimeout(reject, timeout);
-    // Update and fulfill in case of success.
+    // Fulfill and update in case of success.
     fetch(request).then(function (response) {
       clearTimeout(timeoutId);
-      cache.put(request, response);
 
       fulfill(response);
+      updateCache(request, response);
     // Reject also if network fetch rejects.
     }, reject);
+  });
+}
+
+function updateCache(request, response) {
+  return caches.open(CACHE).then(function (cache) {
+    cache.put(request, response);
   });
 }
 
