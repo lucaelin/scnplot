@@ -27,11 +27,14 @@
         <p>This tool can be used to get a quick overview of x32 and m32 scene configurations. Just select or drop a valid ".scn"-file using the button at the top of this page.</p>
         <p>No ".scn"-file will ever be transmitted anywhere - analysis and plotting is done locally.</p>
         <p>A copy of this tool can be obtained at <a href="https://github.com/lucaelin/scnplot">GitHub.com</a>.</p>
+        <p class="offlineSupport">Local installation successfull, you can now visit this page without an Internet connection.</p>
       </div>
     </div>
     <pre></pre>
     <script>
-      navigator.serviceWorker.register('sw.js', {});
+      navigator.serviceWorker.register('sw.js', {}).then((reg)=>{
+        document.querySelector('.offlineSupport').style.display = 'block';
+      });
       document.querySelector('input[type=file]').addEventListener('change', function(evt) {
         gtag('event','filechange');
       });

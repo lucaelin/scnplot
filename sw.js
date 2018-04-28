@@ -12,7 +12,7 @@ const FILES = [
 
 // On install, cache some resource.
 self.addEventListener('install', function(evt) {
-  console.log('The service worker is being installed.');
+  //console.log('The service worker is being installed.');
 
   // Ask the service worker to keep installing until the returning promise
   // resolves.
@@ -22,7 +22,7 @@ self.addEventListener('install', function(evt) {
 // On fetch, use cache but update the entry with the latest contents
 // from the server.
 self.addEventListener('fetch', function(evt) {
-  console.log('The service worker is serving the asset.');
+  //console.log('The service worker is serving the asset.');
   // Try network and if it fails, go for the cached copy.
   evt.respondWith(fromNetwork(evt.request, TIMEOUT).catch(function () {
     return fromCache(evt.request);
@@ -45,7 +45,7 @@ function fromNetwork(request, timeout) {
     var timeoutId = setTimeout(reject, timeout);
     // Fulfill and update in case of success.
     fetch(request).then(function (response) {
-      console.log('The service worker is serving from the network.');
+      //console.log('The service worker is serving from the network.');
       clearTimeout(timeoutId);
 
       fulfill(response);
@@ -57,8 +57,8 @@ function fromNetwork(request, timeout) {
 
 function updateCache(request, response) {
   return caches.open(CACHE).then(function (cache) {
-    console.log('The service worker is updating the cache.');
-    cache.put(request, response);
+    //console.log('The service worker is updating the cache.');
+    cache.put(request, response.clone());
   });
 }
 
@@ -69,10 +69,10 @@ function fromCache(request) {
   return caches.open(CACHE).then(function (cache) {
     return cache.match(request).then(function (matching) {
       if(matching) {
-        console.log('The service worker is serving from the cache.');
+        //console.log('The service worker is serving from the cache.');
         return matching;
       }
-      console.log('The service worker is serving from the cache but didn\'t find a match.');
+      //console.log('The service worker is serving from the cache but didn\'t find a match.');
       return fetch(request);
     });
   });

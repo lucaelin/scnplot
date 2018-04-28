@@ -7,6 +7,11 @@
     color: red;
     font-size: 18pt;
 }
+.offlineSupport {
+    color: #0a5;
+    font-size: 14pt;
+    display: none;
+}
 @media print
 {
     h1 {
