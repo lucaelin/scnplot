@@ -48,7 +48,7 @@ function fromNetwork(request, timeout) {
       //console.log('The service worker is serving from the network.');
       clearTimeout(timeoutId);
 
-      fulfill(response);
+      fulfill(response.clone());
       updateCache(request, response);
     // Reject also if network fetch rejects.
     }, reject);
@@ -58,7 +58,7 @@ function fromNetwork(request, timeout) {
 function updateCache(request, response) {
   return caches.open(CACHE).then(function (cache) {
     //console.log('The service worker is updating the cache.');
-    cache.put(request, response.clone());
+    cache.put(request, response);
   });
 }
 

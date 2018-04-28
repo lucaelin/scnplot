@@ -32,9 +32,11 @@
     </div>
     <pre></pre>
     <script>
-      navigator.serviceWorker.register('sw.js', {}).then((reg)=>{
-        document.querySelector('.offlineSupport').style.display = 'block';
-      });
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js', {}).then((reg)=>{
+          document.querySelector('.offlineSupport').style.display = 'block';
+        });
+      }
       document.querySelector('input[type=file]').addEventListener('change', function(evt) {
         gtag('event','filechange');
       });
