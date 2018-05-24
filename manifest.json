@@ -1,0 +1,112 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "x32/m32 Scene-Plot",
+    "scope": "/scnplot/",
+    "display": "standalone",
+    "start_url": "https://lucaelin.github.io/scnplot/",
+    "short_name": "x32 m32 Scene",
+    "theme_color": "transparent",
+    "description": "This tool creates a table overview for x32 and m32 as well as X-Air scene configuration files",
+    "orientation": "any",
+    "background_color": "transparent",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "/icons/c76a7598-0a36-73fb-7412-c43c40e51096.webPlatform.png",
+            "sizes": "44x44",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/9b7810c7-34db-1078-e1aa-cc48538eb881.webPlatform.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/ba2399c8-1c1f-06f8-e420-28f39fdee895.webPlatform.png",
+            "sizes": "1240x600",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/50f7386d-beae-8462-a40c-f419d29d7d9c.webPlatform.png",
+            "sizes": "300x300",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/20d113d3-4d80-d776-89ef-4dc8484b5f49.webPlatform.png",
+            "sizes": "150x150",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/2a93a6fa-1bdb-df33-7e1d-dcc598197109.webPlatform.png",
+            "sizes": "88x88",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/cf8d9a34-6146-9875-46e7-255879f316a8.webPlatform.png",
+            "sizes": "24x24",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/e8a0098d-9ff2-9d0f-15e0-0176b13e8aca.webPlatform.png",
+            "sizes": "50x50",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/54104316-ea2f-a30d-6115-ea41152ec319.webPlatform.png",
+            "sizes": "620x300",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/129a9d0f-3a7a-1208-6293-56e95acf544c.webPlatform.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/79230ed4-3736-f366-3f01-f6e4adc7c09d.webPlatform.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/646ad53d-7802-b561-76f3-a9431b6fef3c.webPlatform.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/1447638d-3c4c-eaed-2ff2-920a11a9502d.webPlatform.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/413bfa9e-eb66-e105-1dce-87fc0acfbcd3.webPlatform.png",
+            "sizes": "36x36",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/cb25c97b-3c09-4cf6-972f-a518b9fdd7cf.webPlatform.png",
+            "sizes": "1024x1024",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/69d814e1-b8a3-4b61-68cc-eb4302e0a01c.webPlatform.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/78fa8e24-736c-f578-7f03-e1fd697939fc.webPlatform.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/2fb25f2b-7d43-ab3a-15ae-494022475cc4.webPlatform.png",
+            "sizes": "120x120",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/773b435f-3951-cbff-e882-19b410f9b0d8.webPlatform.png",
+            "sizes": "76x76",
+            "type": "image/png"
+        }
+    ]
+}
