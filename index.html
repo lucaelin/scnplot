@@ -34,14 +34,14 @@
     </div>
     <pre></pre>
     <script>
+      document.querySelector('input[type=file]').addEventListener('change', function(evt) {
+        gtag('event','filechange');
+      });
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('sw.js', {}).then((reg)=>{
           document.querySelector('.offlineSupport').style.display = 'block';
         });
       }
-      document.querySelector('input[type=file]').addEventListener('change', function(evt) {
-        gtag('event','filechange');
-      });
     </script>
   </body>
 </html>
