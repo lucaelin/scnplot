@@ -101,13 +101,13 @@ tr > td:first-child {
     border: none;
 }
 .odd .link.boolean.true {
-    background-image: url(./res/linktop.png);
+    background-image: url(../res/linktop.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 .even .link.boolean.true {
-    background-image: url(./res/linkbtn.png);
+    background-image: url(../res/linkbtn.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
