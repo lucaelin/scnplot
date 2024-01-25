@@ -332,7 +332,7 @@ document.querySelector('input[type=file]').addEventListener('change', function(e
       let res = line.split('"'); // split lines on quotes
       res = res.map((e, i)=>{
         if (i%2) return e; // every uneven, previously quoted
-        if (e.trim() !== '') return e.trim().split(' '); // unquoted
+        if (e.trim() !== '') return e.trim().split(' ').filter((e)=>e!==''); // unquoted
         return null; // return null for spaces between quotes
       });
       res = res.filter((e)=>e!==null); // filter null (spaces between quotes)
