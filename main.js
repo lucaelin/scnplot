@@ -249,6 +249,9 @@ function plot(scn) {
   if(scn.version!=='X-Air') {
     let header = document.querySelector('h1');
     header.innerText = scn.name;
+    if(scn.header[2] !== "") {
+      header.innerText = scn.name + " [" + scn.header[2] + "]"
+    }
 
     let one = document.createElement('div');
     one.classList.add("row", "col", "s12", "m12", "l7");
@@ -297,6 +300,7 @@ function convert2json(lines) {
     lines = lines.slice(1);
     scn.version = header[0];
     scn.name = header[1];
+    scn.header = header;
   } else {
     scn.version = 'X-Air';
     scn.name = 'Unnamed scene';
