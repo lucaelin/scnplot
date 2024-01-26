@@ -77,40 +77,153 @@ function getPhysicalIn(scn, id) {
   return id.toString().padStart(2, '0') + ': ' + getPhysicalName(scn, id);
 }
 
+/**
+ * Returns the name of the physical input routed to the channel id provided
+ *
+ * @param {Object} scn The JSON object representation of the X32 Scene file
+ * @param {number} id A channel id to look up the input of
+ * @returns {string} String representation of the physical input
+ */
 function getPhysicalName(scn, id) {
+  // import all channel routing blocks (1-4 + Aux routing)
   let IN = scn.config.routing.IN.value;
+
+  // check if channel id falls within the routable channels
   if(id <= 38) {
-    return IN[Math.floor((id-1)/8)] + ' [' + ((id-1)%8+1) + ']' ;
+    let ingroup = IN[Math.floor((id-1)/8)] // grab the relevant input group for the specified channel
+    let groupid = ((id-1)%8+1) // calculate the relative channel id within the input group
+    let outputname = groupid.toString(); // set the output name to the groupid as a fallback
+    let grouptype = "";
+
+    // check if the input group is a local input group
+    if(ingroup.slice(0,1) === "A") {
+      grouptype = "A"
+    }
+    if(ingroup.slice(0,1) === "B") {
+      grouptype = "B"
+    }
+    if(ingroup.slice(0,2) === "AN") {
+      grouptype = "AN"
+    }
+    if(ingroup.slice(0,3) === "AUX") {
+      grouptype = "AUX"
+    }
+    if(ingroup.slice(0,3) === "UIN") {
+      grouptype = "UIN"
+    }
+    if(ingroup.slice(0,4) === "CARD") {
+      grouptype = "CARD"
+    }
+
+    let groupchs = ingroup.slice(grouptype.length).split("-").map((ch) => parseInt(ch));
+
+    // get relative channel based on channel group
+    let relativech = groupchs[0]+groupid-1;
+
+    switch(grouptype) {
+      case "A":
+        outputname = "AES50-A " + relativech;
+        break;
+      case "B":
+        outputname = "AES50-B " + relativech;
+        break;
+      case "AN":
+        outputname = "Local " + relativech;
+        break;
+      case "AUX":
+        outputname = "Aux In " + relativech;
+        break;
+      case "UIN":
+        // grab the input userrouting array from the scene object
+        let userins = scn.config.userrout.in.value;
+        // use the getUserInName function to grab the corresponding name for the input
+        outputname = getUserInName(userins[relativech-1]);
+        break;
+      case "CARD":
+        outputname = "Card In " + relativech;
+        break;
+    }
+
+    if(groupchs[1] < relativech && grouptype != "AUX") {
+      outputname = "Off";
+    }
+    // return the mapped input in combination with the actual physically routed input
+    return outputname;
   }
 
+  // return the appropriate value for any fixed routing items
   return ({
-    39: 'USB-Player',
-    40: 'USB-Player',
-    41: 'Unknown',
-    42: 'Unknown',
-    43: 'Unknown',
-    44: 'Unknown',
-    45: 'Unknown',
-    46: 'Unknown',
-    47: 'Unknown',
-    48: 'Unknown',
-    49: 'BUS01',
-    50: 'BUS02',
-    51: 'BUS03',
-    52: 'BUS04',
-    53: 'BUS05',
-    54: 'BUS06',
-    55: 'BUS07',
-    56: 'BUS08',
-    57: 'BUS09',
-    58: 'BUS10',
-    59: 'BUS11',
-    60: 'BUS12',
-    61: 'BUS13',
-    62: 'BUS14',
-    63: 'BUS15',
-    64: 'BUS16',
+    39: 'USB-Player L',
+    40: 'USB-Player R',
+    41: 'FX 1L',
+    42: 'FX 1R',
+    43: 'FX 2L',
+    44: 'FX 2R',
+    45: 'FX 3L',
+    46: 'FX 3R',
+    47: 'FX 4L',
+    48: 'FX 4R',
+    49: 'BUS 01',
+    50: 'BUS 02',
+    51: 'BUS 03',
+    52: 'BUS 04',
+    53: 'BUS 05',
+    54: 'BUS 06',
+    55: 'BUS 07',
+    56: 'BUS 08',
+    57: 'BUS 09',
+    58: 'BUS 10',
+    59: 'BUS 11',
+    60: 'BUS 12',
+    61: 'BUS 13',
+    62: 'BUS 14',
+    63: 'BUS 15',
+    64: 'BUS 16',
   })[id];
+}
+
+/**
+ * Grab the correct input name for any given user input mapping
+ *
+ * @param {number} id Mapped user input channel id
+ * @returns {string} Corresponding physical input name
+ */
+function getUserInName(id) {
+  // Define a mutable user input variable
+  let userin = id;
+  // return for unmapped channel config
+  if(userin == 0) {
+    return "Off"
+  }
+  // check for local inputs
+  if(userin <= 32) {
+    return "Local " + userin;
+  }
+  // subtract local inputs if no match was found
+  userin = userin - 32;
+
+  if(userin <= 48) {
+    return "AES50-A " + userin;
+  }
+  userin = userin - 48;
+
+  if(userin <= 48) {
+    return "AES50-B " + userin;
+  }
+  userin = userin - 48;
+
+  if(userin <= 32) {
+    return "Card In " + userin;
+  }
+  userin = userin - 32;
+
+  if(userin <= 6) {
+    return "Aux In " + userin;
+  }
+  // Subtract an extra digit to allow for simple boolean operator
+  userin = userin - 6 - 1;
+
+  return !userin ? "Talkback Int" : "Talkback Ext"
 }
 
 function createChannel(scn, classes) {
@@ -249,6 +362,9 @@ function plot(scn) {
   if(scn.version!=='X-Air') {
     let header = document.querySelector('h1');
     header.innerText = scn.name;
+    if(scn.header[2] !== "") {
+      header.innerText = scn.name + " [" + scn.header[2] + "]"
+    }
 
     let one = document.createElement('div');
     one.classList.add("row", "col", "s12", "m12", "l7");
@@ -297,6 +413,7 @@ function convert2json(lines) {
     lines = lines.slice(1);
     scn.version = header[0];
     scn.name = header[1];
+    scn.header = header;
   } else {
     scn.version = 'X-Air';
     scn.name = 'Unnamed scene';
@@ -332,7 +449,7 @@ document.querySelector('input[type=file]').addEventListener('change', function(e
       let res = line.split('"'); // split lines on quotes
       res = res.map((e, i)=>{
         if (i%2) return e; // every uneven, previously quoted
-        if (e.trim() !== '') return e.trim().split(' '); // unquoted
+        if (e.trim() !== '') return e.trim().split(' ').filter((e)=>e!==''); // unquoted
         return null; // return null for spaces between quotes
       });
       res = res.filter((e)=>e!==null); // filter null (spaces between quotes)
